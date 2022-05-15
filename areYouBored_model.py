@@ -1,66 +1,83 @@
 from random import randint
 from databaseReader import create_activities
+import geopy.distance
 
 restaurants = []
 randomRestaurant = ""
 
-#loads in a restaurant from restaurant_database and turns it into a string
+
+# loads in a restaurant from restaurant_database and turns it into a string
 def load():
     global restaurants
     global randomRestaurant
     restaurants = create_activities("restaurant_database")
-    randomRestaurant = (f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!")
+    randomRestaurant = f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!"
+
 
 def get_random_restaurant():
     global restaurants
     global randomRestaurant
-    randomRestaurant = (f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!")
+    randomRestaurant = f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!"
 
 
-#Sorts based on distance
+# Sorts based on distance
 def sort_distance(rList, rRange):
     d = 0
     try:
         for i in range(len(rList)):
-            if rList[i-d].get_distance() > rRange:
-                del rList[i-d]
+            if rList[i - d].get_distance() > rRange:
+                del rList[i - d]
                 d += 1
     except:
         pass
     return rList
 
-#Sorts based on rating
+
+# Sorts based on rating
 def sort_rating(rList, rRange):
     d = 0
     try:
         for i in range(len(rList)):
-            if rList[i-d].get_rating() < rRange:
-                del rList[i-d]
+            if rList[i - d].get_rating() < rRange:
+                del rList[i - d]
                 d += 1
     except:
         pass
     return rList
 
-#Sorts based on price
+
+# Sorts based on price
 def sort_price(rList, rRange):
     d = 0
     try:
         for i in range(0, len(rList)):
-            if rList[i-d].get_price_int() > rRange:
-                del rList[i-d]
+            if rList[i - d].get_price_int() > rRange:
+                del rList[i - d]
                 d += 1
     except:
         pass
     return rList
+
 
 def get_restaurant():
     global restaurants
     global randomRestaurant
     try:
-        randomRestaurant = (f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!")
+        randomRestaurant = f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!"
     except IndexError:
         randomRestaurant = "There are no restaurants that matches your filters"
     return randomRestaurant
 
+
 def get_restaurant_list():
     return restaurants
+
+
+def get_distance(x_1, y_1, x_2, y_2):
+    coords_1 = (x_1, y_1)
+    coords_2 = (x_2, y_2)
+    return geopy.distance.distance(coords_1, coords_2).km
+
+
+d = get_distance(63.820246034145626, 20.305446101853075, 63.82025076310683, 20.300789779763065)
+print(d)

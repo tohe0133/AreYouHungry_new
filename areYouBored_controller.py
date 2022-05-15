@@ -9,10 +9,12 @@ def home():
     load()
     return render_template('index.html')
 
+
 @app.route('/print')
 def print():
     get_restaurant()
     return render_template('view.html', restaurants=get_restaurant())
+
 
 @app.route('/sort', methods=['POST'])
 def sort():
