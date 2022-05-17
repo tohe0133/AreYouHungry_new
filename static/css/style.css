@@ -12,7 +12,7 @@ body {
     padding: 0;
 }
 .rate {
-    float: left;
+    """float: left;"""
     height: 46px;
     padding: 0 10px;
 }
@@ -49,7 +49,7 @@ body {
 
 
 .price {
-    float: left;
+    """float: right;"""
     height: 46px;
     padding: 0 10px;
 }
@@ -93,3 +93,4 @@ body {
     background-color: rgb(29 30 22 / 25%);
     border-color: #f9fafb;
 }
+

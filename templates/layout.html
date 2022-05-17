@@ -16,10 +16,12 @@
 <body>
 <header><h1 class="text-center" style="color: white"> Are You Hungry? {{initial}}</h1></header>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <form action="/sort" method="post">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="nav-link" href="/">Home </a>
-        <label style="color: white">Rating:</label>
-            <form action="/sort" method="post">
+
+        <div style="display:flex; align-items:center; padding-left:16px;">
+               <label style="color: white">Rating:</label>
                 <div class="rate">
                     <input type="radio" id="star5" name="rate" value="5" />
                     <label for="star5" title="5 stars"></label>
@@ -32,6 +34,9 @@
                     <input type="radio" id="star1" name="rate" value="1" />
                     <label for="star1" title="1 star"></label>
                 </div>
+        </div>
+        <div style="display:flex; align-items:center; padding-left:16px;">
+                <label style="color: white">Price:</label>
                 <div class="price">
                     <input type="radio" id="dollar1" name="price" value="3"/>
                     <label for="dollar1" title="High price"></label>
@@ -40,13 +45,20 @@
                     <input type="radio" id="dollar3" name="price" value="1"/>
                     <label for="dollar3" title="Low price"></label>
                 </div>
-                <label style="color: white">Distance:</label>
-                <input type="range" value="1000" min="1" max="2000" name="distance" oninput="this.nextElementSibling.value = this.value">
-                <output style="color: white">1000</output>
-                <label style="color: white"> m away </label>
-                <button type="submit"> Sort</button>
-            </form>
-    </nav>
+            </div>
+            <div style="display:flex; align-items:center; padding-left:16px;">
+                <label style="color: white" >Distance: </label>
+                <div style="padding:16px;">
+                    <input type="range" value="1000" min="1" max="2000" name="distance" oninput="this.nextElementSibling.value = this.value">
+                    <output style="color: white">1000</output>
+                    <label style="color: white"> m away </label>
+                </div>
+            </div>
+            <div style="padding-left:16px;">
+                <button type="submit" class="btn btn-secondary"> Sort</button>
+            </div>
+        </nav>
+    </form>
 </div>
 {% block body %} {% endblock %}
 
