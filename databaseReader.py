@@ -1,7 +1,12 @@
 from activity import Activity
+import geopy.distance
+
+# coordinates for a place in central Umeå
+my_coords = (63.82587043650309, 20.26303012372108)
 
 
 def create_activities(database_name):
+    global my_coords
     data_base = open(database_name, "r")
     _activity_info = data_base.readlines()
     data_base.close()
@@ -28,5 +33,9 @@ def create_activities(database_name):
     # an Activity which is then put into the final list.
     for i in range(len(activ_lists)):
         item_activ = activ_lists[i]
-        activity_list.append(Activity(item_activ[0], item_activ[1], item_activ[2], item_activ[3]))
+        item_coords = (item_activ[1],item_activ[2])
+        distance = geopy.distance.distance(my_coords, item_coords).m
+        activity_list.append(Activity(item_activ[0], distance, item_activ[3], item_activ[4]))
+        # test to print the activity created
+        # print(Activity(item_activ[0], distance, item_activ[3], item_activ[4]).show_activity_info())
     return activity_list

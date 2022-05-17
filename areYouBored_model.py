@@ -1,6 +1,5 @@
 from random import randint
 from databaseReader import create_activities
-import geopy.distance
 
 restaurants = []
 randomRestaurant = ""
@@ -71,13 +70,3 @@ def get_restaurant():
 
 def get_restaurant_list():
     return restaurants
-
-
-def get_distance(x_1, y_1, x_2, y_2):
-    coords_1 = (x_1, y_1)
-    coords_2 = (x_2, y_2)
-    return geopy.distance.distance(coords_1, coords_2).km
-
-
-d = get_distance(63.820246034145626, 20.305446101853075, 63.82025076310683, 20.300789779763065)
-print(d)
