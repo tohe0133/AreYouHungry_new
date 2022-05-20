@@ -1,5 +1,7 @@
-from flask import Flask, request, render_template
-from areYouBored_model import load, get_restaurant, get_restaurant_list, sort_distance, sort_rating, sort_price
+from flask import Flask, request, render_template, redirect
+from areYouBored_model import load, get_restaurant, get_restaurant_list, sort_distance, sort_rating, sort_price, \
+    go_to_restaurant
+import requests
 
 app = Flask(__name__)
 
@@ -32,6 +34,12 @@ def sort():
     except TypeError:
         pass
     return render_template('index.html', message='Sorting restaurants...')
+
+
+
+@app.route('/take_me_there')
+def take_me_there():
+    return redirect(f"https://www.google.com/maps/place/{go_to_restaurant()}")
 
 
 if __name__ == '__main__':

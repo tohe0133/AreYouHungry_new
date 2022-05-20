@@ -35,7 +35,7 @@ def create_activities(database_name):
         item_activ = activ_lists[i]
         item_coords = (item_activ[1],item_activ[2])
         distance = geopy.distance.distance(my_coords, item_coords).m
-        activity_list.append(Activity(item_activ[0], distance, item_activ[3], item_activ[4]))
+        activity_list.append(Activity(item_activ[0], distance, item_activ[3], item_activ[4], item_coords[0], item_coords[1]))
         # test to print the activity created
-        # print(Activity(item_activ[0], distance, item_activ[3], item_activ[4]).show_activity_info())
+        # print(activity_list[0].coords)
     return activity_list

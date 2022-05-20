@@ -1,9 +1,11 @@
 class Activity:
-    def __init__(self, aName, aDistance, aRating, aPrice):
+    def __init__(self, aName, aDistance, aRating, aPrice, aCoords1, aCoords2):
         self.name = aName
         self.distance = float(aDistance)
         self.rating = float(aRating)
         self.price = aPrice
+        self.coords1 = aCoords1
+        self.coords2 = aCoords2
 
     def show_activity_info(self):
         return f"{self.name.title()} is {self.distance} km away it has a rating of {self.rating} and is in a " \
@@ -30,3 +32,6 @@ class Activity:
             return 2
         else:
             return 3
+
+    def get_coords(self):
+        return f"{self.coords1},{self.coords2}"
