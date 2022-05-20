@@ -31,7 +31,7 @@ def sort():
         sort_distance(restaurant, int(request.values.get('distance')))
     except TypeError:
         pass
-    return render_template('index.html', message='Restaurants have been sorted')
+    return render_template('index.html', message='Sorting restaurants...')
 
 
 if __name__ == '__main__':
