@@ -18,33 +18,34 @@
 <div class="container">
     <form action="/sort" method="post">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="nav-link" href="/">Home </a>
-
-        <div style="display:flex; align-items:center; padding-left:16px;">
-               <label style="color: white">Rating:</label>
-                <div class="rate">
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label for="star5" title="5 stars"></label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label for="star4" title="4 stars"></label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label for="star3" title="3 stars"></label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label for="star2" title="2 stars"></label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="1 star"></label>
-                </div>
-        </div>
-        <div style="display:flex; align-items:center; padding-left:16px;">
-                <label style="color: white">Price:</label>
-                <div class="price">
-                    <input type="radio" id="dollar1" name="price" value="3"/>
-                    <label for="dollar1" title="High price"></label>
-                    <input type="radio" id="dollar2" name="price" value="2"/>
-                    <label for="dollar2" title="Medium price"></label>
-                    <input type="radio" id="dollar3" name="price" value="1"/>
-                    <label for="dollar3" title="Low price"></label>
-                </div>
+            <div style="padding-left:16px;">
+                <a class="btn btn-secondary" href="/">Home </a>
+            </div>
+            <div style="display:flex; align-items:center; padding-left:16px;">
+                   <label style="color: white">Rating:</label>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="5 stars"></label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="4 stars"></label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="3 stars"></label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="2 stars"></label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="1 star"></label>
+                    </div>
+            </div>
+            <div style="display:flex; align-items:center; padding-left:16px;">
+                    <label style="color: white">Price:</label>
+                    <div class="price">
+                        <input type="radio" id="dollar1" name="price" value="3"/>
+                        <label for="dollar1" title="High price"></label>
+                        <input type="radio" id="dollar2" name="price" value="2"/>
+                        <label for="dollar2" title="Medium price"></label>
+                        <input type="radio" id="dollar3" name="price" value="1"/>
+                        <label for="dollar3" title="Low price"></label>
+                    </div>
             </div>
             <div style="display:flex; align-items:center; padding-left:16px;">
                 <label style="color: white" >Distance: </label>
@@ -57,7 +58,7 @@
             <div style="padding-left:16px;">
                 <button type="submit" class="btn btn-secondary"> Sort</button>
             </div>
-            <a class="nav-link" href="/">Reset sorting </a>
+            <a class="btn btn-secondary" href="/">Reset sorting</a>
         </nav>
     </form>
 </div>
