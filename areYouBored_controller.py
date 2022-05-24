@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, redirect
 from areYouBored_model import get_restaurant, go_to_restaurant, id_generation, sort
-import requests
 
 app = Flask(__name__)
 restaurant_id = 0

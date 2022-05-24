@@ -53,9 +53,10 @@ def sort(in_rating, in_price):
                     WHERE 
                     rating >= {in_rating} AND price <= {in_price}
                 """)
-    tuple1 = cursor.fetchone()
-    rv = f"{tuple1[0]},{tuple1[1]}"
-    return rv
+    rv = []
+    for row in cursor:
+        rv.append(list(row))
+    return f"You could eat at {''.join(rv[0])}!"
 
 
 # Sorts based on distance
