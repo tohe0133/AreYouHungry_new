@@ -26,6 +26,25 @@ def get_random_restaurant():
     randomRestaurant = f"You could eat at {restaurants[randint(0, len(restaurants)) - 1].get_name()}!"
 
 
+def sorting(in_distance, in_rating, in_price):
+    global my_coords
+    first_x = float(my_coords[0]) + (float(in_distance) * 0.00000899774)
+    second_x = float(my_coords[0]) - (float(in_distance) * 0.00000899774)
+    first_y = float(my_coords[1]) + (float(in_distance) * 0.00000899774)
+    second_y = float(my_coords[1]) - (float(in_distance) * 0.00000899774)
+    cursor = connection.cursor()
+    cursor.execute(f"""
+                    SELECT id
+                    FROM restaurant 
+                    WHERE 
+                    x between {first_x} and {second_x} AND y between {first_y} and {second_y} AND
+                    rating >= {in_rating} AND price <= {in_price}
+                """)
+    rv = cursor.fetchone()
+    print(rv)
+
+
+
 # Sorts based on distance
 def sort_distance(rList, rRange):
     d = 0
@@ -98,7 +117,6 @@ def id_generation():
 
 
 def go_to_restaurant(id_number):
-    rv = []
     cursor = connection.cursor()
     cursor.execute(f"""
                 SELECT x, y
@@ -106,9 +124,9 @@ def go_to_restaurant(id_number):
                 WHERE 
                 id = {id_number}
             """)
-    for row in cursor:
-        rv.append(list(row))
-    print(rv)
+    tuple1 = cursor.fetchone()
+    rv = f"{tuple1[0]},{tuple1[1]}"
+    return rv
 
 
 def get_restaurant_list():
