@@ -64,46 +64,21 @@ def sort_price(rList, rRange):
     return rList
 
 
-# def get_restaurant():
-#     global restaurants
-#     global randomRestaurant
-#     global chosenRestaurant
-#     try:
-#         randomRestaurant = f"You could eat at {chosenRestaurant.get_name()}!"
-#     except IndexError:
-#         randomRestaurant = "There are no restaurants that matches your filters"
-#     return randomRestaurant
-
-def get_restaurant(id_number):
-    rv = []
-    cursor = connection.cursor()
-    cursor.execute(f"""
-            SELECT name 
-            FROM restaurant 
-            WHERE 
-            id = {id_number}
-        """)
-    for row in cursor:
-        rv.append(list(row))
-    return f"You could eat at {''.join(rv[0])}!"
+def get_restaurant():
+    global restaurants
+    global randomRestaurant
+    global chosenRestaurant
+    try:
+        randomRestaurant = f"You could eat at {chosenRestaurant.get_name()}!"
+    except IndexError:
+        randomRestaurant = "There are no restaurants that matches your filters"
+    return randomRestaurant
 
 
-def id_generation():
-    return randint(0, 12)
-
-
-def go_to_restaurant(id_number):
-    rv = []
-    cursor = connection.cursor()
-    cursor.execute(f"""
-                SELECT x, y
-                FROM restaurant 
-                WHERE 
-                id = {id_number}
-            """)
-    for row in cursor:
-        rv.append(list(row))
-    print(rv)
+def go_to_restaurant():
+    global chosenRestaurant
+    prompt_string = chosenRestaurant.get_coords()
+    return prompt_string
 
 
 def get_restaurant_list():
