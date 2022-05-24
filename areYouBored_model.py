@@ -7,8 +7,8 @@ restaurants = []
 randomRestaurant = ""
 chosenRestaurant = Activity(0, 0, 0, 0, 0, 0)
 
-
 connection = sqlite3.connect("restaurant.db", check_same_thread=False)
+
 
 # loads in a restaurant from restaurant_database and turns it into a string
 def load():
@@ -90,10 +90,15 @@ def get_restaurant(id_number):
 
 
 def id_generation():
-    return randint(1, 12)
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM restaurant")
+    results = cursor.fetchall()
+    length = len(results)
+    return randint(1, length)
 
 
 def go_to_restaurant(id_number):
+    rv = []
     cursor = connection.cursor()
     cursor.execute(f"""
                 SELECT x, y
@@ -101,9 +106,9 @@ def go_to_restaurant(id_number):
                 WHERE 
                 id = {id_number}
             """)
-    tup1 = cursor.fetchone()
-    rv = f"{tup1[0]},{tup1[1]}"
-    return rv
+    for row in cursor:
+        rv.append(list(row))
+    print(rv)
 
 
 def get_restaurant_list():

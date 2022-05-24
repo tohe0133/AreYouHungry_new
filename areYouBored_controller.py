@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect
-from areYouBored_model import load, get_restaurant, get_restaurant_list, sort_distance, sort_rating, sort_price, \
+from areYouBored_model import load, get_restaurant, sort_distance, sort_rating, sort_price, \
     go_to_restaurant, id_generation
 import requests
 
