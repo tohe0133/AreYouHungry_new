@@ -2,8 +2,7 @@ from random import randint
 import sqlite3
 
 connection = sqlite3.connect("restaurant.db", check_same_thread=False)
-
-
+my_coords = (63.82587043650309, 20.26303012372108)
 
 
 def get_restaurant(id_number):
