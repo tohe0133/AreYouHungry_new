@@ -7,13 +7,9 @@ body {
     padding: 30px;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-}
 .rate {
     """float: left;"""
-    height: 46px;
+    height: 70px;
     padding: 0 10px;
 }
 .rate:not(:checked) > input {
@@ -50,7 +46,7 @@ body {
 
 .price {
     """float: right;"""
-    height: 46px;
+    height: 70px;
     padding: 0 10px;
 }
 .price:not(:checked) > input {
@@ -83,6 +79,23 @@ body {
 .price > label:hover ~ input:checked ~ label {
     color: #49c457;
 }
+
+.sortbar {
+  width: 1000px;
+  height: 70px;
+  box-sizing: content-box;
+  display: inline-block
+}
+
+.sortName {
+    width: 200px;
+}
+
+.navbar{
+  min-height: 70px;
+  height: 70px;
+}
+
 
 .randomizerbutton {
     padding: 4rem 3rem;
