@@ -1,11 +1,12 @@
 from random import randint
 from databaseReader import create_activities
 from activity import Activity
+import sqlite3
 
 restaurants = []
 randomRestaurant = ""
 chosenRestaurant = Activity(0, 0, 0, 0, 0, 0)
-import sqlite3
+
 
 connection = sqlite3.connect("restaurant.db", check_same_thread=False)
 
@@ -89,11 +90,10 @@ def get_restaurant(id_number):
 
 
 def id_generation():
-    return randint(0, 12)
+    return randint(1, 12)
 
 
 def go_to_restaurant(id_number):
-    rv = []
     cursor = connection.cursor()
     cursor.execute(f"""
                 SELECT x, y
@@ -101,9 +101,9 @@ def go_to_restaurant(id_number):
                 WHERE 
                 id = {id_number}
             """)
-    for row in cursor:
-        rv.append(list(row))
-    print(rv)
+    tup1 = cursor.fetchone()
+    rv = f"{tup1[0]},{tup1[1]}"
+    return rv
 
 
 def get_restaurant_list():
