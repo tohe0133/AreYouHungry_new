@@ -30,10 +30,8 @@ else:
 CREATE INDEX dims ON restaurant(name,rating,price);
 """
 
-
 connection = sqlite3.connect("restaurant.db")
 rest_from_file = create_activities("restaurant_database")
-print(rest_from_file[1].show_activity_info())
 
 
 def define_db():
@@ -41,10 +39,6 @@ def define_db():
     for command in definition.split(";"):
         cursor.execute(command)
 
-def make_indexes():
-    cursor = connection.cursor()
-    for command in indexes.split(";"):
-        cursor.execute(command)
 
 def add_restaurant(in_name, in_x, in_y, in_rating, in_price):
     cursor = connection.cursor()
@@ -57,6 +51,7 @@ def add_restaurant(in_name, in_x, in_y, in_rating, in_price):
         '{in_price}')
     """)
     connection.commit()
+
 
 def get_rating(in_rating):
     rv = []
@@ -71,17 +66,13 @@ def get_rating(in_rating):
         rv.append(list(row))
     return rv
 
+
 define_db()
+try:
+    for i in range(len(rest_from_file)):
+        add_restaurant(rest_from_file[i].get_name(), rest_from_file[i].get_coords_x(), rest_from_file[i].get_coords_y(),
+                       rest_from_file[i].get_rating(), rest_from_file[i].get_price())
+    print("The database was created!")
 
-for i in range(len(rest_from_file)):
-    add_restaurant(rest_from_file[i].get_name(),rest_from_file[i].get_coords_x(),rest_from_file[i].get_coords_y(), rest_from_file[i].get_rating(), rest_from_file[i].get_price())
-
-if build_indexes:
-    make_indexes()
-
-if not build_indexes:
-    print("*** Without Indexing ***")
-elif index_option_one:
-    print("*** Three single attribute indexes ***")
-else:
-    print("*** One three attribute index ***")
+except:
+    print("There was an error creating the database")
