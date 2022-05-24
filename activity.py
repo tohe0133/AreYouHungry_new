@@ -3,7 +3,7 @@ class Activity:
         self.name = aName
         self.distance = float(aDistance)
         self.rating = float(aRating)
-        self.price = aPrice
+        self.price = int(aPrice)
         self.coords1 = aCoords1
         self.coords2 = aCoords2
 
@@ -22,16 +22,6 @@ class Activity:
 
     def get_price(self):
         return self.price
-
-    def get_price_int(self):
-        if self.price == " Free":
-            return 0
-        elif self.price == " Low":
-            return 1
-        elif self.price == " Medium":
-            return 2
-        else:
-            return 3
 
     def get_coords(self):
         return f"{self.coords1},{self.coords2}"
