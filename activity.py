@@ -35,3 +35,9 @@ class Activity:
 
     def get_coords(self):
         return f"{self.coords1},{self.coords2}"
+
+    def get_coords_x(self):
+        return self.coords1
+
+    def get_coords_y(self):
+        return self.coords2
