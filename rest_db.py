@@ -15,24 +15,13 @@ CREATE TABLE restaurant(
     x real,
     y real,
     rating integer,
-    price text,
+    price integer,
     PRIMARY KEY (id)
 );
 """
 
-if index_option_one:
-    indexes = """
-CREATE INDEX namedim ON restaurant(name);
-CREATE INDEX ratingdim ON restaurant(rating);
-CREATE INDEX pricedim ON restaurant(price);"""
-else:
-    indexes = """
-CREATE INDEX dims ON restaurant(name,rating,price);
-"""
-
 connection = sqlite3.connect("restaurant.db")
 rest_from_file = create_activities("restaurant_database")
-
 
 def define_db():
     cursor = connection.cursor()
@@ -48,26 +37,13 @@ def add_restaurant(in_name, in_x, in_y, in_rating, in_price):
         {in_x},
         {in_y},
         {in_rating},
-        '{in_price}')
+        {in_price})
     """)
     connection.commit()
 
 
-def get_rating(in_rating):
-    rv = []
-    cursor = connection.cursor()
-    cursor.execute(f"""
-        SELECT * 
-        FROM restaurant 
-        WHERE 
-        rating = {in_rating}
-    """)
-    for row in cursor:
-        rv.append(list(row))
-    return rv
-
-
 define_db()
+
 try:
     for i in range(len(rest_from_file)):
         add_restaurant(rest_from_file[i].get_name(), rest_from_file[i].get_coords_x(), rest_from_file[i].get_coords_y(),
