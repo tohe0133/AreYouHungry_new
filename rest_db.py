@@ -1,6 +1,6 @@
 import sqlite3
-import activity
-from fileReader import create_activities
+import os
+from textfile_loader import create_activities
 
 build_indexes = True
 index_option_one = False
@@ -20,8 +20,13 @@ CREATE TABLE restaurant(
 );
 """
 
+try:
+    os.remove("restaurant.db")
+except:
+    pass
+
 connection = sqlite3.connect("restaurant.db")
-rest_from_file = create_activities("restaurant_database")
+rest_from_file = create_activities("restaurants_textfile")
 
 def define_db():
     cursor = connection.cursor()

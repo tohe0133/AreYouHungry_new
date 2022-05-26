@@ -1,30 +1,19 @@
 class Activity:
-    def __init__(self, aName, aDistance, aRating, aPrice, aCoords1, aCoords2):
+    def __init__(self, aName, aCoords1, aCoords2, aRating, aPrice):
         self.name = aName
-        self.distance = float(aDistance)
-        self.rating = float(aRating)
-        self.price = int(aPrice)
         self.coords1 = aCoords1
         self.coords2 = aCoords2
-
-    def show_activity_info(self):
-        return f"{self.name.title()} is {self.distance} km away it has a rating of {self.rating} and is in a " \
-               f"{self.price} price range"
+        self.rating = float(aRating)
+        self.price = int(aPrice)
 
     def get_name(self):
         return self.name
-
-    def get_distance(self):
-        return self.distance
 
     def get_rating(self):
         return self.rating
 
     def get_price(self):
         return self.price
-
-    def get_coords(self):
-        return f"{self.coords1},{self.coords2}"
 
     def get_coords_x(self):
         return self.coords1
