@@ -3,6 +3,8 @@ from areYouBored_model import get_restaurant, go_to_restaurant, id_generation, s
 
 app = Flask(__name__)
 restaurant_id = 0
+user_location = ()
+
 
 @app.route('/')
 def home():
@@ -28,7 +30,7 @@ def sort_rest():
 @app.route('/take_me_there')
 def take_me_there():
     global restaurant_id
-    return redirect(f"https://www.google.com/maps/place/{go_to_restaurant(restaurant_id)}")
+    return redirect(f" https://www.google.com/maps/search/?api=1&query={go_to_restaurant(restaurant_id)}")
 
 
 if __name__ == '__main__':

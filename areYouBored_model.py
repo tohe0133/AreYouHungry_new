@@ -51,7 +51,7 @@ def sorting(in_distance, in_rating, in_price):
                     FROM restaurant 
                     WHERE 
                     x < {first_x} AND x > {second_x} AND 
-                    y < {first_y} AND y < {second_y} AND
+                    y < {first_y} AND y > {second_y} AND
                     rating >= {in_rating} AND 
                     price <= {in_price}
                 """)
