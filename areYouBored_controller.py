@@ -16,6 +16,14 @@ def home():
 @app.route('/print')
 def print():
     global restaurant_id
+    restaurant_id = id_generation()
+    get_restaurant(restaurant_id)
+    return render_template('view.html', restaurants=get_restaurant(restaurant_id))
+
+
+@app.route('/sorted_print')
+def sorted_print():
+    global restaurant_id
     get_restaurant(restaurant_id)
     return render_template('view.html', restaurants=get_restaurant(restaurant_id))
 
@@ -24,7 +32,10 @@ def print():
 def sort_rest():
     global restaurant_id
     restaurant_id = sorting(int(request.values.get('distance')), int(request.values.get('rate')),int(request.values.get('price')))
-    return render_template('index.html', message='Sorting restaurants...')
+    if restaurant_id == 0:
+        return render_template('index.html', message='Could not find any restaurant. Try again')
+    else:
+        return render_template('index.html', message='Sorting restaurants...')
 
 
 @app.route('/take_me_there')
