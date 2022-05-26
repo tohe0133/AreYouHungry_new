@@ -1,6 +1,6 @@
 import sqlite3
 import activity
-from databaseReader import create_activities
+from fileReader import create_activities
 
 build_indexes = True
 index_option_one = False
