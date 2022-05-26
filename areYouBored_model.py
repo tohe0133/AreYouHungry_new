@@ -55,7 +55,13 @@ def sorting(in_distance, in_rating, in_price):
                     rating >= {in_rating} AND 
                     price <= {in_price}
                 """)
-    results = cursor.fetchall()
-    print(results)
-    length = len(results)
-    return randint(1, length)
+    rv = []
+    for row in cursor:
+        rv.append(list(row))
+    length = len(rv)
+    try:
+        rv_item = rv[randint(0, length - 1)]
+        return rv_item[0]
+    except ValueError:
+        rv_item = 0
+        return rv_item
