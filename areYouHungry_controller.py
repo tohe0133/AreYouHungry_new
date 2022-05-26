@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect
-from areYouBored_model import get_restaurant, go_to_restaurant, id_generation, sorting
+from areYouHungry_model import get_restaurant, go_to_restaurant, id_generation, sorting
 
 app = Flask(__name__)
 restaurant_id = 0
@@ -21,7 +21,7 @@ def home():
 @app.route('/print')
 def print():
     global restaurant_id, is_sorted, distance, rating, price
-    if is_sorted == False:
+    if not is_sorted:
         restaurant_id = id_generation()
         get_restaurant(restaurant_id)
         return render_template('view.html', restaurants=get_restaurant(restaurant_id))

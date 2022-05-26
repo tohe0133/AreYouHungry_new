@@ -39,6 +39,7 @@ def go_to_restaurant(id_number):
     rv = f"{tuple1[0]},{tuple1[1]}"
     return rv
 
+
 def sorting(in_distance, in_rating, in_price):
     global my_coords
     first_x = float(my_coords[0]) + (float(in_distance) * 0.00000899774)

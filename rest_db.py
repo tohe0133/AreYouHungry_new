@@ -28,6 +28,7 @@ except:
 connection = sqlite3.connect("restaurant.db")
 rest_from_file = create_activities("restaurants_textfile")
 
+
 def define_db():
     cursor = connection.cursor()
     for command in definition.split(";"):
@@ -54,6 +55,5 @@ try:
         add_restaurant(rest_from_file[i].get_name(), rest_from_file[i].get_coords_x(), rest_from_file[i].get_coords_y(),
                        rest_from_file[i].get_rating(), rest_from_file[i].get_price())
     print("The database was created!")
-
 except:
     print("There was an error creating the database")
