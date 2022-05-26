@@ -39,18 +39,23 @@ def go_to_restaurant(id_number):
     rv = f"{tuple1[0]},{tuple1[1]}"
     return rv
 
-
-def sort( in_distance, in_rating, in_price):
+def sorting(in_distance, in_rating, in_price):
     global my_coords
-
+    first_x = float(my_coords[0]) + (float(in_distance) * 0.00000899774)
+    second_x = float(my_coords[0]) - (float(in_distance) * 0.00000899774)
+    first_y = float(my_coords[1]) + (float(in_distance) * 0.00000899774)
+    second_y = float(my_coords[1]) - (float(in_distance) * 0.00000899774)
     cursor = connection.cursor()
     cursor.execute(f"""
                     SELECT id
                     FROM restaurant 
                     WHERE 
-                    rating >= {in_rating} AND price <= {in_price}
+                    x < {first_x} AND x > {second_x} AND 
+                    y < {first_y} AND y < {second_y} AND
+                    rating >= {in_rating} AND 
+                    price <= {in_price}
                 """)
-    rv = []
-    for row in cursor:
-        rv.append(list(row))
-    return f"You could eat at {''.join(rv[0])}!"
+    results = cursor.fetchall()
+    print(results)
+    length = len(results)
+    return randint(1, length)
