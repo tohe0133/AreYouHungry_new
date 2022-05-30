@@ -7,7 +7,7 @@ Make sure you have Python and a IDE installed before you start the installation.
 
 ## Installation and Usage
 ### Step 1
-Start by making installing Flask and SQlite3.
+Start by installing Flask and SQlite3.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install these.
 ```bash
 pip install Flask
