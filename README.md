@@ -2,7 +2,7 @@
 
 
 ## Requirements
-This website requires [Python](https://www.python.org/downloads/), [Pycharm](https://www.jetbrains.com/pycharm/download/) (or any other Python IDE), Flask and SQLite3. 
+This website requires [Python](https://www.python.org/downloads/), a Python IDE (like [Pycharm](https://www.jetbrains.com/pycharm/download/)), Flask and SQLite3 to run. 
 Make sure you have Python and a IDE installed before you start the installation.
 
 ## Installation and Usage
