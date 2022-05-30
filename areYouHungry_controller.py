@@ -12,7 +12,10 @@ is_sorted = False
 
 @app.route('/')
 def home():
-    global restaurant_id, is_sorted
+    global restaurant_id, is_sorted, distance, rating, price
+    distance = 2000
+    rating = 1
+    price = 3
     is_sorted = False
     restaurant_id = id_generation()
     return render_template('index.html', message=None)
