@@ -1,8 +1,8 @@
 # AreYouHungry website
-This is a website that suggests a place to eat, a restaurant or café, to the user.
+
 
 ## Requirements
-This project requires [Python](https://www.python.org/downloads/), [Pycharm](https://www.jetbrains.com/pycharm/download/) (or any other Python IDE), Flask and SQLite3. 
+This website requires [Python](https://www.python.org/downloads/), [Pycharm](https://www.jetbrains.com/pycharm/download/) (or any other Python IDE), Flask and SQLite3. 
 Make sure you have Python and a IDE installed before you start the installation.
 
 ## Installation and Usage
