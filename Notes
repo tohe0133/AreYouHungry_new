@@ -1,0 +1,8 @@
+CREATE TABLE Restaurant (
+id integer,
+name text,
+latitude real,
+longitude real,
+rating integer,
+price text,
+PRIMARY KEY id);
